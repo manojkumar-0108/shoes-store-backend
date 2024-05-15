@@ -9,6 +9,8 @@ const rateLimit = require('express-rate-limit');
  * custom functions import statements
  */
 const { serverConfig } = require('./config');
+const { pingCheck } = require('./controllers');
+const apiRouter = require('./routes');
 
 
 /**
@@ -31,6 +33,9 @@ const limiter = rateLimit({
 app.use(limiter);
 
 
+app.get('/ping', pingCheck('Server is live...'));
+
+app.use('/api', apiRouter);
 
 app.listen(serverConfig.PORT, () => {
     console.log(`Server started at port ${serverConfig.PORT}`);
