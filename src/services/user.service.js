@@ -157,6 +157,7 @@ class UserService {
             }
 
             const role = await this.roleRepository.getRoleByName(data.role);
+            console.log(role);
             if (!role) {
                 throw new AppError(StatusCodes.NOT_FOUND, 'Cannot find role', [`No role found for the given role : ${data.role}`]);
             }
@@ -168,11 +169,12 @@ class UserService {
             }
 
             //If user already has the role
-            const alreadyHasRole = await userRoleRepository.getUserRole(user.id, role.id);
+            const alreadyHasRole = await this.userRoleRepository.getUserRole(user.id, role.id);
+
             if (alreadyHasRole) {
                 throw new AppError(StatusCodes.BAD_REQUEST, `Role already associated`, [`User is already ${role.name}`]);
             }
-            return await userRoleRepository.create(user_role);
+            return await this.userRoleRepository.create(user_role);
         } catch (error) {
             if (error instanceof AppError) {
                 throw error;
