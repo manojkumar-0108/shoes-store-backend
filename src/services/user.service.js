@@ -33,8 +33,8 @@ class UserService {
                 role_id: role.id
             }
             await this.userRoleRepository.create(user_role);
-            return user;
-
+            const jwt = auth.generateToken({ id: user.id });
+            return jwt;
         } catch (error) {
 
             if (error instanceof AppError) {
