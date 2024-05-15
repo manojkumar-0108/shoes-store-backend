@@ -8,9 +8,10 @@ const rateLimit = require('express-rate-limit');
 /**
  * custom functions import statements
  */
+const { sequelize } = require('./models');
 const { serverConfig } = require('./config');
 const { pingCheck } = require('./controllers');
-const { errorHandler } = require('./utils');
+const { errorHandler, resetIdentity } = require('./utils');
 const apiRouter = require('./routes');
 
 
@@ -42,5 +43,21 @@ app.use('/api', apiRouter);
 app.use(errorHandler);
 
 app.listen(serverConfig.PORT, () => {
+
     console.log(`Server started at port ${serverConfig.PORT}`);
+
+    /**
+     * Node: below code is to reset identiy columns in sql server, uncomment only if you are using MSSQL.
+     */
+
+    sequelize.authenticate()
+        .then(() => {
+            return resetIdentity();
+        })
+        .then(() => {
+            console.log("Succes: Identity seed reset successfull");
+        })
+        .catch(error => {
+            console.error('Database is not connected:', error);
+        });
 })
