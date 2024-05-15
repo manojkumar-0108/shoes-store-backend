@@ -10,6 +10,7 @@ const rateLimit = require('express-rate-limit');
  */
 const { serverConfig } = require('./config');
 const { pingCheck } = require('./controllers');
+const { errorHandler } = require('./utils');
 const apiRouter = require('./routes');
 
 
@@ -36,6 +37,9 @@ app.use(limiter);
 app.get('/ping', pingCheck('Server is live...'));
 
 app.use('/api', apiRouter);
+
+//last middleware for handling errors
+app.use(errorHandler);
 
 app.listen(serverConfig.PORT, () => {
     console.log(`Server started at port ${serverConfig.PORT}`);
