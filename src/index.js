@@ -29,7 +29,6 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.raw());
 
-
 // Rate Limiter
 const limiter = rateLimit({
     windowMs: 5 * 60 * 1000, // 5 minutes
@@ -39,6 +38,8 @@ app.use(limiter);
 
 
 app.get('/ping', pingCheck('Server is live...'));
+
+app.use("/images", express.static('uploads'));
 
 app.use('/api', apiRouter);
 

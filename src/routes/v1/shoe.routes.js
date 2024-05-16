@@ -4,11 +4,6 @@ const { userMiddleware, shoeMiddleware, upload } = require('../../middlewares');
 
 const shoeRouter = express.Router();
 
-
-/**
- * /api/v1/users/ping
- */
-
 shoeRouter.get('/ping',
     userMiddleware.checkAuth,
     pingCheck('Shoe API is live...')
@@ -16,8 +11,9 @@ shoeRouter.get('/ping',
 
 shoeRouter.post('/',
     userMiddleware.checkAuth,
-    shoeMiddleware.validateCreateRequest,
+    userMiddleware.isAdmin,
     upload.single('image'),
+    shoeMiddleware.validateCreateRequest,
     shoeController.addShoe
 );
 
