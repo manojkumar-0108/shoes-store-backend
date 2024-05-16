@@ -27,6 +27,16 @@ class CartRepository extends CurdRepository {
 
         return products;
     }
+
+    async bulkDeleteCartItems(userId) {
+        const products = await this.model.delete({
+            where: {
+                user_id: userId
+            }
+        });
+
+        return products;
+    }
 }
 
 module.exports = CartRepository;
