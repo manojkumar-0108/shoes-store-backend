@@ -3,14 +3,11 @@ const fs = require('fs');
 
 const { AppError, InternalServerError } = require('../errors');
 const { ShoeRepository } = require('../repositories');
-const { where } = require('sequelize');
-
-
 
 
 class ShoeService {
 
-    constructor(shoeRepository) {
+    constructor() {
         this.shoeRepository = new ShoeRepository();
     }
 
