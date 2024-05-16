@@ -3,7 +3,7 @@
  */
 const express = require('express');
 const rateLimit = require('express-rate-limit');
-
+const cors = require('cors');
 
 /**
  * custom functions import statements
@@ -19,6 +19,9 @@ const apiRouter = require('./routes');
  * Main 
  */
 const app = express();
+
+//Configuring CORS 
+app.use(cors());
 
 //body parsing middlewares
 app.use(express.urlencoded({ extended: true }));

@@ -14,13 +14,13 @@ const userService = new UserService();
 async function register(req, res, next) {
 
     try {
-        const user = await userService.createUser({
+        const response = await userService.createUser({
             name: req.body.name,
             email: req.body.email,
             password: req.body.password
         });
 
-        SuccessResponse.data = user;
+        SuccessResponse.data = response;
         SuccessResponse.message = "Successfully created account";
         SuccessResponse.statusCode = StatusCodes.CREATED;
 

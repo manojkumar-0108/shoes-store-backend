@@ -246,16 +246,22 @@ class UserService {
             }
 
             const adminRole = await this.roleRepository.getRoleByName(enums.USER_ROLES.ADMIN);
+            const sellerRole = await this.roleRepository.getRoleByName(enums.USER_ROLES.SELLER);
+
             if (!adminRole) {
                 throw new AppError(StatusCodes.NOT_FOUND, 'Cannot find role', [`No role found for the admin `]);
             }
 
-            //Updating user role
-            const userRole = await this.userRoleRepository.getUserRole(user.id, adminRole.id);
+            if (!sellerRole) {
+                throw new AppError(StatusCodes.NOT_FOUND, 'Cannot find role', [`No role found for the seller `]);
+            }
+
+            //checking if user has admin roles or not
+            const userRole = await this.userRoleRepository.getUserRole(user.id, adminRole.id, sellerRole.id);
+
             if (!userRole) {
                 throw new AppError(StatusCodes.UNAUTHORIZED, 'User not authorized', [`User is not authorized to perform this action, admin privilages required`]);
             }
-
             return userRole.user_id === user.id;
         } catch (error) {
             if (error instanceof AppError) {

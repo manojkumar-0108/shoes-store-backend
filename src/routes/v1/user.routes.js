@@ -42,7 +42,7 @@ userRouter.post(
 userRouter.post('/login',
     userMiddleware.validateLoginRequest,
     userController.login
-)
+);
 
 
 /**
