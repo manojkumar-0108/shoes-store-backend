@@ -97,7 +97,7 @@ async function updateShoe(req, res, next) {
 
 async function removeShoe(req, res, next) {
     try {
-        const shoe = await shoeService.removeShoe(req.body.id);
+        const shoe = await shoeService.removeShoe(req.params.shoeId);
 
         SuccessResponse.data = shoe;
         SuccessResponse.message = "Shoe removed successfully";

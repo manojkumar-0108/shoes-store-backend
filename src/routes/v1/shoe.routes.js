@@ -17,7 +17,12 @@ shoeRouter.post('/',
     shoeController.addShoe
 );
 
-shoeRouter.get('/', shoeController.getShoes);
+shoeRouter.get('/',
+    userMiddleware.checkAuth,
+    userMiddleware.isAdmin,
+    shoeController.getShoes
+);
+
 
 shoeRouter.get('/:id', shoeController.getShoe);
 
@@ -26,7 +31,7 @@ shoeRouter.patch('/:id',
     userMiddleware.isAdmin,
     shoeController.updateShoe);
 
-shoeRouter.delete('/:id',
+shoeRouter.delete('/:shoeId',
     userMiddleware.checkAuth,
     userMiddleware.isAdmin,
     shoeController.removeShoe);

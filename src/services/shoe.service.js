@@ -69,16 +69,9 @@ class ShoeService {
     async removeShoe(id) {
 
         try {
-
-            const shoe = await this.shoeRepository.findByPk(id);
-
+            const shoe = await this.shoeRepository.get(id);
             fs.unlink(`uploads/${shoe.image}`, () => { });
-
-            const response = await this.shoeRepository.destroy({
-                where: {
-                    id: id
-                }
-            });
+            const response = await this.shoeRepository.destroy(id);
             return response;
 
         } catch (error) {
