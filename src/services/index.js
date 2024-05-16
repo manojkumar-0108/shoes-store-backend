@@ -2,5 +2,6 @@
 module.exports = {
     UserService: require('./user.service'),
     ShoeService: require('./shoe.service'),
-    CartService: require('./cart.service')
+    CartService: require('./cart.service'),
+    OrderService: require('./order.service')
 }
