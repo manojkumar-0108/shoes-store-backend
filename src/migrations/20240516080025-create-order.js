@@ -17,10 +17,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       user_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Users',
+          model: 'users',
           key: 'id',
           name: 'FK_Orders_userId'
         },
@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
-      address: {
+      address_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -42,16 +42,15 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
       },
-      orderStatus: {
+      order_status: {
         type: Sequelize.STRING,
         defaultValue: CREATED
       },
       date: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('NOW')
+        type: Sequelize.DATE
       },
       payment: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
         defaultValue: PENDING
       },
       createdAt: {
@@ -68,3 +67,5 @@ module.exports = {
     await queryInterface.dropTable('Orders');
   }
 };
+
+

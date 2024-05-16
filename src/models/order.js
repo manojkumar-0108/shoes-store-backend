@@ -1,7 +1,12 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
+const { enums } = require('../utils/common');
+
+const { CREATED } = enums.ORDER_STATUS;
+const { PENDING } = enums.PAYMENT_STATUS;
+
+
 module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     /**
@@ -18,37 +23,33 @@ module.exports = (sequelize, DataTypes) => {
         onUpdate: 'CASCADE'
       });
 
+      this.belongsToMany(models.Shoe, { through: 'orderItems', as: 'orderedShoes' });
     }
   }
   Order.init({
     user_id: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    items: {
-      type: DataTypes.JSON,
-      defaultValue: {},
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     amount: {
       type: DataTypes.FLOAT,
       allowNull: false
     },
-    address: {
+    address_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    status: {
+    order_status: {
       type: DataTypes.STRING,
-      defaultValue: "Food Processing"
+      defaultValue: CREATED
     },
     date: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+      defaultValue: new Date()
     },
     payment: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
+      type: DataTypes.STRING,
+      defaultValue: PENDING
     }
   }, {
     sequelize,
