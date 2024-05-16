@@ -13,7 +13,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsToMany(models.Role, { through: 'userRoles', as: 'role' });
+      this.belongsToMany(models.Role,
+        {
+          through: 'userRoles',
+          as: 'role'
+        });
+
+      this.belongsToMany(models.Shoe,
+        { through: 'userCarts', as: 'cart' }
+      );
+
     }
   }
   User.init({
