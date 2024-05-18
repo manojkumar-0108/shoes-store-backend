@@ -14,20 +14,22 @@ class ShoeService {
 
         try {
             //if product already present in cart, update qty otherwise add new entry
-            const findProduct = await this.cartRepository.findProduct(userId, productId);
+            let findProduct = await this.cartRepository.findProduct(userId, productId);
 
             if (findProduct) {
                 await this.cartRepository.update(findProduct.id, {
                     quantity: (findProduct.quantity + 1)
-                })
+                });
             } else {
-                await this.cartRepository.create({
+                findProduct = await this.cartRepository.create({
                     user_id: userId,
-                    product_id: productId
+                    shoe_id: productId
                 });
             }
-            return true;
+            return findProduct;
         } catch (error) {
+
+            console.log(error);
 
             if (error.statusCode == StatusCodes.NOT_FOUND) {
                 throw new AppError(error.statusCode, "Cannot find the product in cart", ["Product and user is not present"]);
@@ -80,17 +82,13 @@ class ShoeService {
         try {
             const cartItems = await this.cartRepository.getAllCartItems(userId);
 
-            console.log('Cart Items : ', cartItems);
-
             let cartData = {};
 
             if (cartItems.length > 0) {
                 cartItems.map((item) => {
-                    cartData[item.product_id] = item.quantity;
+                    cartData[item.shoe_id] = item.quantity;
                 });
             }
-
-            console.log('Cart data : ', cartData)
 
             return cartData;
 

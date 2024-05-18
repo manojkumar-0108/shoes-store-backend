@@ -11,7 +11,7 @@ class CartRepository extends CurdRepository {
         const product = await this.model.findOne({
             where: {
                 user_id: userId,
-                product_id: productId
+                shoe_id: productId
             }
         });
 
@@ -19,7 +19,7 @@ class CartRepository extends CurdRepository {
     }
 
     async getAllCartItems(userId) {
-        const products = await this.model.find({
+        const products = await this.model.findAll({
             where: {
                 user_id: userId
             }

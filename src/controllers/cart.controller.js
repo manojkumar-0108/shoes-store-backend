@@ -8,7 +8,8 @@ const cartService = new CartService();
 async function addToCart(req, res, next) {
 
     try {
-        const cart = await cartService.addToCart(req.params.userId, req.params.productId);
+        const cart = await cartService.addToCart(req.user.id, req.params.productId);
+
         SuccessResponse.data = cart;
         SuccessResponse.message = "Successfully added to cart";
         SuccessResponse.statusCode = StatusCodes.CREATED;
@@ -25,7 +26,7 @@ async function addToCart(req, res, next) {
 async function removeFromCart(req, res, next) {
 
     try {
-        const response = await cartService.removeFromCart(req.params.userId, req.params.productId);
+        const response = await cartService.removeFromCart(req.user.id, req.params.productId);
 
         SuccessResponse.data = response;
         SuccessResponse.message = "Item removed successfully";
@@ -43,7 +44,8 @@ async function removeFromCart(req, res, next) {
 async function getAllCartItems(req, res, next) {
 
     try {
-        const cartItems = await cartService.getCart(req.params.userId);
+
+        const cartItems = await cartService.getCart(req.user.id);
 
         SuccessResponse.data = cartItems;
         SuccessResponse.message = "Fetched cart successfully";

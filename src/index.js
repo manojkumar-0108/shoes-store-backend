@@ -36,10 +36,7 @@ const limiter = rateLimit({
 })
 app.use(limiter);
 
-
 app.get('/ping', pingCheck('Server is live...'));
-
-app.use("/images", express.static('uploads'));
 
 app.use('/api', apiRouter);
 
