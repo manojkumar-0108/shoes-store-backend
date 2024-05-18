@@ -5,7 +5,7 @@ const { OrderRepository, OrderItemRepository, AddressRepository, CartRepository,
 
 const processPayments = require('../utils/helpers/stripe.payment');
 const { enums } = require('../utils/common');
-const { PENDING, FAILED, PAID } = enums.PAYMENT_STATUS
+const { FAILED, PAID } = enums.PAYMENT_STATUS
 
 const orderItemRepository = new OrderItemRepository();
 const addressRepository = new AddressRepository();
@@ -72,10 +72,12 @@ class OrderService {
             await cartRepository.bulkDeleteCartItems(newOrder.user_id);
 
             //process payments 
-            const session = await processPayments(items, address, newOrder);
+            const session = await processPayments(items, address, newOrder.id);
             return session.url;
 
         } catch (error) {
+
+            console.log(error);
 
             if (error.name == 'Error') {
                 console.log("Called : ");

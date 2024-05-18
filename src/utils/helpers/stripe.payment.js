@@ -3,7 +3,7 @@ const Stripe = require("stripe");
 const stripe = new Stripe(serverConfig.STRIPE_SECRET_KEY);
 
 
-async function processPayments(items, address, newOrder) {
+async function processPayments(items, address, orderId) {
 
     const line_items = items.map((item) => ({
         price_data: {
@@ -39,8 +39,8 @@ async function processPayments(items, address, newOrder) {
     });
 
     const session = await stripe.checkout.sessions.create({
-        success_url: `http://localhost:5173/verify?success=true&orderId=${newOrder.id}`,
-        cancel_url: `http://localhost:5173/verify?success=false&orderId=${newOrder.id}`,
+        success_url: `http://localhost:5173/verify?success=true&orderId=${orderId}`,
+        cancel_url: `http://localhost:5173/verify?success=false&orderId=${orderId}`,
         line_items: line_items,
         mode: 'payment',
         customer: customer.id

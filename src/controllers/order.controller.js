@@ -10,7 +10,6 @@ async function placeOrder(req, res, next) {
     try {
         const sessionURL = await orderService.placeOrder(req.body, req.user.id);
 
-        console.log(sessionURL);
         SuccessResponse.data = sessionURL;
         SuccessResponse.message = "Successfully placed order";
         SuccessResponse.statusCode = StatusCodes.CREATED;

@@ -23,8 +23,6 @@ orderRouter.patch('/status/:orderId',
 );
 
 orderRouter.patch('/verify/:orderId',
-    userMiddleware.checkAuth,
-    userMiddleware.isAdmin,
     orderController.verfiyOrder
 );
 
