@@ -29,7 +29,7 @@ class CartRepository extends CurdRepository {
     }
 
     async bulkDeleteCartItems(userId) {
-        const products = await this.model.delete({
+        const products = await this.model.destroy({
             where: {
                 user_id: userId
             }

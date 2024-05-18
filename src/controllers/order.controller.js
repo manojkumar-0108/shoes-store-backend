@@ -8,8 +8,10 @@ const orderService = new OrderService();
 async function placeOrder(req, res, next) {
 
     try {
-        const order = await orderService.placeOrder(req.body);
-        SuccessResponse.data = order;
+        const sessionURL = await orderService.placeOrder(req.body, req.user.id);
+
+        console.log(sessionURL);
+        SuccessResponse.data = sessionURL;
         SuccessResponse.message = "Successfully placed order";
         SuccessResponse.statusCode = StatusCodes.CREATED;
 
@@ -43,7 +45,7 @@ async function getAllOrders(req, res, next) {
 async function getUserOrders(req, res, next) {
 
     try {
-        const orders = await orderService.getUserOrders(req.params.userId);
+        const orders = await orderService.getUserOrders(req.user.id);
 
         SuccessResponse.data = orders;
         SuccessResponse.message = "Fetched orders successfully";

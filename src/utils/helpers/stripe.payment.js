@@ -1,7 +1,6 @@
 const { serverConfig } = require('../../config');
-
 const Stripe = require("stripe");
-const stripe = new Stripe(serverConfig.STRIPE_SECRECT_KEY);
+const stripe = new Stripe(serverConfig.STRIPE_SECRET_KEY);
 
 
 async function processPayments(items, address, newOrder) {

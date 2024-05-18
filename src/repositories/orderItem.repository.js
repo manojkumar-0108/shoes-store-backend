@@ -11,6 +11,15 @@ class OrderItemRepository extends CurdRepository {
         const response = await this.model.bulkCreate(data);
         return response;
     }
+
+    async getItemsByOrderId(orderId) {
+        const response = await this.model.findAll({
+            where: {
+                order_id: orderId
+            }
+        });
+        return response;
+    }
 }
 
 module.exports = OrderItemRepository;

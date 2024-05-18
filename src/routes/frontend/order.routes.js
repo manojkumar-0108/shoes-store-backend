@@ -8,7 +8,7 @@ orderRouter.get('/ping', pingCheck('Order API is live...'));
 
 orderRouter.get('/',
     userMiddleware.checkAuth,
-    orderController.getAllOrders
+    orderController.getUserOrders
 );
 
 orderRouter.post('/',

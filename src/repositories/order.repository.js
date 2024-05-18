@@ -8,7 +8,7 @@ class OrderRepository extends CurdRepository {
     }
 
     async getUserOrders(userId) {
-        const orders = this.model.find({
+        const orders = this.model.findAll({
             where: {
                 user_id: userId
             }
