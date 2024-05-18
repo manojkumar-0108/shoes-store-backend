@@ -102,9 +102,13 @@ class OrderService {
 
         try {
             const orders = await this.orderRepository.getAll();
+
             const response = await Promise.all(orders.map(async (data) => {
                 const order = data.dataValues;
                 const orderItems = await orderItemRepository.getItemsByOrderId(order.id);
+
+                const address = await addressRepository.get(order.address_id);
+                order.address = address;
                 const itemsData = await Promise.all(orderItems.map(async (item) => {
                     const shoe = await shoeRepository.get(item.dataValues.shoe_id);
                     return {
@@ -116,6 +120,8 @@ class OrderService {
                 order.items = itemsData;
                 return order;
             }));
+
+
             return response;
         } catch (error) {
 
@@ -160,7 +166,7 @@ class OrderService {
         try {
 
             const response = await this.orderRepository.update(orderId, {
-                orderStatus: status
+                order_status: status
             });
 
             return response;

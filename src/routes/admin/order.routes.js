@@ -12,16 +12,6 @@ orderRouter.get('/',
     orderController.getAllOrders
 );
 
-orderRouter.get('/:userId',
-    userMiddleware.checkAuth,
-    orderController.getUserOrders
-);
-
-orderRouter.post('/',
-    userMiddleware.checkAuth,
-    orderController.placeOrder
-);
-
 orderRouter.patch('/status/:orderId',
     userMiddleware.checkAuth,
     userMiddleware.isAdmin,
