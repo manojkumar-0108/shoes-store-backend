@@ -39,8 +39,8 @@ async function processPayments(items, address, orderId) {
     });
 
     const session = await stripe.checkout.sessions.create({
-        success_url: `http://localhost:5173/verify?success=true&orderId=${orderId}`,
-        cancel_url: `http://localhost:5173/verify?success=false&orderId=${orderId}`,
+        success_url: `${serverConfig.PAYMENT_SUCCESS_URL}${orderId}`,
+        cancel_url: `${serverConfig.PAYMENT_FAILED_URL}${orderId}`,
         line_items: line_items,
         mode: 'payment',
         customer: customer.id
