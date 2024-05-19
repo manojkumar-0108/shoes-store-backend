@@ -8,10 +8,10 @@ const cors = require('cors');
 /**
  * custom functions import statements
  */
-const { sequelize } = require('./models');
+
 const { serverConfig } = require('./config');
 const { pingCheck } = require('./controllers');
-const { errorHandler, resetIdentity } = require('./utils');
+const { errorHandler } = require('./utils');
 const apiRouter = require('./routes');
 
 const CRON = require('./utils/helpers/cron.jobs');
@@ -51,19 +51,4 @@ app.listen(serverConfig.PORT, () => {
 
     //cron job to cancel all the orders whose payment is not completed within 20 minutes
     CRON();
-
-    /**
-     * Node: below code is to reset identiy columns in sql server, uncomment only if you are using MSSQL.
-     */
-
-    sequelize.authenticate()
-        .then(() => {
-            return resetIdentity();
-        })
-        .then(() => {
-            console.log("Succes: Identity seed reset successfull");
-        })
-        .catch(error => {
-            console.error('Database is not connected:', error);
-        });
-})
+});

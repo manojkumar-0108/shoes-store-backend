@@ -1,6 +1,6 @@
 const express = require('express');
-const { pingCheck, shoeController, userController } = require('../../controllers');
-const { userMiddleware, shoeMiddleware, upload } = require('../../middlewares');
+const { pingCheck, shoeController } = require('../../controllers');
+const { userMiddleware, shoeMiddleware } = require('../../middlewares');
 
 const shoeRouter = express.Router();
 
@@ -12,7 +12,6 @@ shoeRouter.get('/ping',
 shoeRouter.post('/',
     userMiddleware.checkAuth,
     userMiddleware.isAdmin,
-    upload.single('image'),
     shoeMiddleware.validateCreateRequest,
     shoeController.addShoe
 );

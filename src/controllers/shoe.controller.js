@@ -8,15 +8,12 @@ const shoeService = new ShoeService();
 async function addShoe(req, res, next) {
 
     try {
-
-        let imageFilename = `${req.file.filename}`;
-
         const shoe = await shoeService.createShoe({
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
             category: req.body.category,
-            image: imageFilename,
+            image: req.body.image,
         });
 
         SuccessResponse.data = shoe;
