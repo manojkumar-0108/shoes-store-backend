@@ -1,5 +1,4 @@
 const { StatusCodes } = require('http-status-codes');
-const fs = require('fs');
 
 const { AppError, InternalServerError } = require('../errors');
 const { ShoeRepository } = require('../repositories');
@@ -71,7 +70,6 @@ class ShoeService {
 
         try {
             const shoe = await this.shoeRepository.get(id);
-            fs.unlink(`uploads/${shoe.image}`, () => { });
             const response = await this.shoeRepository.destroy(id);
             return response;
 
