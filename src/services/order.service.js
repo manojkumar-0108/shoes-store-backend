@@ -204,6 +204,19 @@ class OrderService {
             throw new InternalServerError("Cannot get the cart items");
         }
     }
+
+
+    async cancelOldBookings() {
+        try {
+            const time = new Date(Date.now() - 1000 * 300); // time 5 mins ago
+            const response = await this.orderRepository.cancelOldBookings(time);
+            return response;
+
+        } catch (error) {
+            console.log(error);
+            throw new AppError(StatusCodes.INTERNAL_SERVER_ERROR, 'Something went worng!', [error]);
+        }
+    }
 }
 
 

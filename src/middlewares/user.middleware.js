@@ -70,7 +70,20 @@ async function isAdmin(req, res, next) {
         const userService = new UserService();
         const response = await userService.isAdmin(req.user.id);
         if (!response) {
-            throw new AppError(StatusCodes.UNAUTHORIZED, 'Cannot add role.', ['User not authorized for this action'])
+            throw new AppError(StatusCodes.UNAUTHORIZED, 'Cannot add shoes', ['User not authorized for this action'])
+        }
+        next();
+    } catch (error) {
+        next(error);
+    }
+}
+
+async function isCustomer(req, res, next) {
+    try {
+        const userService = new UserService();
+        const response = await userService.isCustomer(req.user.id);
+        if (!response) {
+            throw new AppError(StatusCodes.UNAUTHORIZED, 'Sellers Cannot place order', ['Sellers cannot place orders']);
         }
         next();
     } catch (error) {
@@ -82,5 +95,6 @@ module.exports = {
     validateRegisterRequest,
     validateLoginRequest,
     checkAuth,
-    isAdmin
+    isAdmin,
+    isCustomer
 };

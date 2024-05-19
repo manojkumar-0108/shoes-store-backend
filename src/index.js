@@ -14,6 +14,8 @@ const { pingCheck } = require('./controllers');
 const { errorHandler, resetIdentity } = require('./utils');
 const apiRouter = require('./routes');
 
+const CRON = require('./utils/helpers/cron.jobs');
+
 
 /**
  * Main 
@@ -46,6 +48,9 @@ app.use(errorHandler);
 app.listen(serverConfig.PORT, () => {
 
     console.log(`Server started at port ${serverConfig.PORT}`);
+
+    //cron job to cancel all the orders whose payment is not completed within 20 minutes
+    CRON();
 
     /**
      * Node: below code is to reset identiy columns in sql server, uncomment only if you are using MSSQL.

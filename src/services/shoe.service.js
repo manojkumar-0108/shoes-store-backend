@@ -20,6 +20,7 @@ class ShoeService {
 
         } catch (error) {
 
+            console.log(error);
             if (error.name == 'SequelizeValidationError') {
 
                 let explanation = [];

@@ -257,7 +257,7 @@ class UserService {
             }
 
             //checking if user has admin roles or not
-            const userRole = await this.userRoleRepository.getUserRole(user.id, adminRole.id, sellerRole.id);
+            const userRole = await this.userRoleRepository.getUserRole(user.id, [adminRole.id, sellerRole.id]);
 
             if (!userRole) {
                 throw new AppError(StatusCodes.UNAUTHORIZED, 'User not authorized', [`User is not authorized to perform this action, admin privilages required`]);
@@ -282,6 +282,45 @@ class UserService {
         }
     }
 
+
+    async isCustomer(id) {
+
+        try {
+            const user = await this.userRepository.get(id);
+            if (!user) {
+                throw new AppError(StatusCodes.NOT_FOUND, 'User not found', [`No user found for the given id : ${id}`]);
+            }
+
+            const customerRole = await this.roleRepository.getRoleByName(enums.USER_ROLES.CUSTOMER);
+
+
+            if (!customerRole) {
+                throw new AppError(StatusCodes.NOT_FOUND, 'Cannot find role', [`No role found for the customer `]);
+            }
+
+
+            //checking if user has customer roles or not
+            const userRole = await this.userRoleRepository.getUserRole(user.id, [customerRole.id]);
+            return userRole != null;
+
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;
+            }
+
+            if (error.name == 'SequelizeValidationError') {
+
+                let explanation = [];
+
+                error.errors.forEach((err) => {
+                    explanation.push(err.message);
+                });
+
+                throw new AppError(StatusCodes.BAD_REQUEST, "Something went wrong doing validation", explanation);
+            }
+            throw new InternalServerError("No user found");
+        }
+    }
 }
 
 

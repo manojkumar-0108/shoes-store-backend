@@ -12,13 +12,13 @@ class UserRoleRepository extends CrudRepository {
         super(userRole);
     }
 
-    async getUserRole(userId, adminRoleId, sellerRoleId) {
+    async getUserRole(userId, rolesId) {
 
         const userRole = await this.model.findOne({
             where: {
                 user_id: userId,
                 role_id: {
-                    [Op.in]: [adminRoleId, sellerRoleId]
+                    [Op.in]: rolesId
                 }
             }
         });

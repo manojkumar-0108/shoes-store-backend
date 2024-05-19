@@ -13,6 +13,7 @@ orderRouter.get('/',
 
 orderRouter.post('/',
     userMiddleware.checkAuth,
+    userMiddleware.isCustomer,
     orderController.placeOrder
 );
 
