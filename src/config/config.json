@@ -1,10 +1,10 @@
 
 {
   "development": {
-    "username": "manoj",
-    "password": "172617",
-    "database": "ShoesStore_DB",
-    "host": "127.0.0.1",
+    "username": "ujqqgwcuefre2vgd",
+    "password": "GCEh8msMmLjduxC33Jbk",
+    "database": "b2mypdemcj6m4xueyqj5",
+    "host": "b2mypdemcj6m4xueyqj5-mysql.services.clever-cloud.com",
     "dialect": "mysql"
   },
   "test": {

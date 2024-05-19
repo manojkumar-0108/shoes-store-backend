@@ -13,7 +13,7 @@ module.exports = {
      * }], {});
     */
 
-    await queryInterface.bulkInsert('shoes', [
+    await queryInterface.bulkInsert('Shoes', [
       {
         name: "Nike Air Force 1",
         description: "Iconic streetwear sneaker with timeless design and comfort.",
@@ -305,6 +305,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('shoes', null, {});
+    await queryInterface.bulkDelete('Shoes', null, {});
   }
 };
