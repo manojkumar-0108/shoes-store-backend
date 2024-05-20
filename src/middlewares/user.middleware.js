@@ -83,7 +83,7 @@ async function isCustomer(req, res, next) {
         const userService = new UserService();
         const response = await userService.isCustomer(req.user.id);
         if (!response) {
-            throw new AppError(StatusCodes.UNAUTHORIZED, 'Sellers Cannot place order', ['Sellers cannot place orders']);
+            throw new AppError(StatusCodes.UNAUTHORIZED, 'Sellers cannot perform this action', ['Sellers cannot perform this action']);
         }
         next();
     } catch (error) {
