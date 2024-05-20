@@ -1,4 +1,8 @@
-# 📖 Shoes Store - Ecommerce Site Backend
+# 📖 Shoes Store - Backend Service
+
+**Deployed at** : https://shoes-store-server.onrender.com/
+
+- example: https://shoes-store-server.onrender.com/ping
 
 ## Key Highlights
 
