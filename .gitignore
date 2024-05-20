@@ -7,3 +7,4 @@ combined*.log
 
 combined.log
 
+src/config/config.json
