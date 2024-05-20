@@ -68,14 +68,13 @@ async function getShoe(req, res, next) {
 async function updateShoe(req, res, next) {
 
     try {
-        let imageFilename = `${req.file.filename}`;
 
         const shoe = await shoeService.updateShoe(req.params.id, {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
             category: req.body.category,
-            image: imageFilename,
+            image: req.body.image,
         });
 
         SuccessResponse.data = shoe;

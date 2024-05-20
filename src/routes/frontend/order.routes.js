@@ -8,6 +8,7 @@ orderRouter.get('/ping', pingCheck('Order API is live...'));
 
 orderRouter.get('/',
     userMiddleware.checkAuth,
+    userMiddleware.isCustomer,
     orderController.getUserOrders
 );
 
@@ -15,16 +16,6 @@ orderRouter.post('/',
     userMiddleware.checkAuth,
     userMiddleware.isCustomer,
     orderController.placeOrder
-);
-
-orderRouter.patch('/status/:orderId',
-    userMiddleware.checkAuth,
-    userMiddleware.isAdmin,
-    orderController.updateOrderStatus
-);
-
-orderRouter.patch('/verify/:orderId',
-    orderController.verfiyOrder
 );
 
 module.exports = orderRouter;
