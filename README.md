@@ -4,6 +4,12 @@
 
 - example: https://shoes-store-server.onrender.com/ping
 
+⚠️ **<font color=red>Warning:</font>**
+
+> <font color=red>Because the project is hosted on Render's free tier, it may take some time to load the website for the first time. Please be patient.</font>
+
+> > "Your free instance will spin down due to inactivity, which can lead to delays in requests by 50 seconds or more." - Render
+
 ## Key Highlights
 
 ✨ **User Authentication:**
