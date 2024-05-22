@@ -18,4 +18,8 @@ orderRouter.post('/',
     orderController.placeOrder
 );
 
+orderRouter.patch('/verify/:orderId',
+    orderController.verfiyOrder
+);
+
 module.exports = orderRouter;
