@@ -14,7 +14,10 @@ class OrderRepository extends CurdRepository {
         const orders = this.model.findAll({
             where: {
                 user_id: userId
-            }
+            },
+            order: [
+                ['createdAt', 'DESC'],
+            ]
         });
 
         return orders;

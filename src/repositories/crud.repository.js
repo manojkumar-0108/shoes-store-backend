@@ -41,7 +41,11 @@ class CrudRepository {
     }
 
     async getAll() {
-        const response = await this.model.findAll();
+        const response = await this.model.findAll({
+            order: [
+                ['createdAt', 'DESC'],
+            ]
+        });
         return response;
     }
 
