@@ -50,8 +50,6 @@ function validateLoginRequest(req, res, next) {
 
 async function checkAuth(req, res, next) {
     try {
-
-        console.log('REQ Headers : ', req.headers['x-access-token']);
         const userService = new UserService();
         const response = await userService.isAuthenticated(req.headers['x-access-token']);
 

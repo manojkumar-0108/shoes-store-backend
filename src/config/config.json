@@ -2,23 +2,27 @@
 {
   "development": {
     "username": "manoj",
-    "password": "172617",
-    "database": "ShoesStore_DB",
-    "host": "127.0.0.1",
-    "dialect": "mssql"
+    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
+    "database": "shoes_store_db_jrjj",
+    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
+    "dialect": "postgres",
+    "logging": false
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "manoj",
+    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
+    "database": "shoes_store_db_jrjj",
+    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
+    "dialect": "postgres",
+    "logging": false
+
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+   "username": "manoj",
+    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
+    "database": "shoes_store_db_jrjj",
+    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
+    "dialect": "postgres",
+    "logging": false
   }
 }

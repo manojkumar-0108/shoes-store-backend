@@ -45,7 +45,6 @@ async function login(req, res, next) {
             email: req.body.email,
             password: req.body.password
         });
-
         SuccessResponse.data = response;
         SuccessResponse.message = "Successfully signed in";
         SuccessResponse.statusCode = StatusCodes.OK;
