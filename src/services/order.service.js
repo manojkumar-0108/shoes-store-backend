@@ -206,10 +206,10 @@ class OrderService {
     }
 
 
-    async cancelOldBookings() {
+    async cancelOldOrders() {
         try {
             const time = new Date(Date.now() - 1000 * 300); // time 5 mins ago
-            const response = await this.orderRepository.cancelOldBookings(time);
+            const response = await this.orderRepository.cancelOldOrders(time);
             return response;
 
         } catch (error) {

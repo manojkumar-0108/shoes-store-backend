@@ -23,7 +23,7 @@ class OrderRepository extends CurdRepository {
         return orders;
     }
 
-    async cancelOldBookings(timestamp) {
+    async cancelOldOrders(timestamp) {
 
         const [affectedCount, affectedRows] = await this.model.update(
             {
