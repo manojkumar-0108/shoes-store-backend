@@ -10,6 +10,7 @@ async function placeOrder(req, res, next) {
     try {
         const sessionURL = await orderService.placeOrder(req.body, req.user.id);
 
+        SuccessResponse.success = true;
         SuccessResponse.data = sessionURL;
         SuccessResponse.message = "Successfully placed order";
         SuccessResponse.statusCode = StatusCodes.CREATED;
@@ -28,6 +29,7 @@ async function getAllOrders(req, res, next) {
     try {
         const orders = await orderService.getAllOrders();
 
+        SuccessResponse.success = true;
         SuccessResponse.data = orders;
         SuccessResponse.message = "Fetched orders successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -46,6 +48,7 @@ async function getUserOrders(req, res, next) {
     try {
         const orders = await orderService.getUserOrders(req.user.id);
 
+        SuccessResponse.success = true;
         SuccessResponse.data = orders;
         SuccessResponse.message = "Fetched orders successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -67,6 +70,7 @@ async function updateOrderStatus(req, res, next) {
 
         const response = await orderService.updateOrderStatus(req.params.orderId, req.body.status);
 
+        SuccessResponse.success = true;
         SuccessResponse.data = response;
         SuccessResponse.message = "Status Updated successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -85,8 +89,10 @@ async function verfiyOrder(req, res, next) {
     try {
         const response = await orderService.verfiyOrder(req.params.orderId, req.body.success);
 
-        if (req.body.success !== 'true') {
+        if (req.body.success === 'false') {
             SuccessResponse.success = false;
+        } else {
+            SuccessResponse.success = true;
         }
         SuccessResponse.data = response;
         SuccessResponse.message = "Order verified successfully";

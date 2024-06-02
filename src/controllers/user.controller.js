@@ -20,6 +20,7 @@ async function register(req, res, next) {
             password: req.body.password
         });
 
+        SuccessResponse.success = true;
         SuccessResponse.data = response;
         SuccessResponse.message = "Successfully created account";
         SuccessResponse.statusCode = StatusCodes.CREATED;
@@ -45,6 +46,8 @@ async function login(req, res, next) {
             email: req.body.email,
             password: req.body.password
         });
+
+        SuccessResponse.success = true;
         SuccessResponse.data = response;
         SuccessResponse.message = "Successfully signed in";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -70,6 +73,7 @@ async function addRoleToUser(req, res, next) {
             userId: req.body.userId
         });
 
+        SuccessResponse.success = true;
         SuccessResponse.data = user;
         SuccessResponse.message = "Added role successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -90,6 +94,7 @@ async function revokeUserRole(req, res, next) {
             userId: req.body.userId
         });
 
+        SuccessResponse.success = true;
         SuccessResponse.data = user;
         SuccessResponse.message = "Revoked role successfully";
         SuccessResponse.statusCode = StatusCodes.OK;

@@ -16,6 +16,7 @@ async function addShoe(req, res, next) {
             image: req.body.image,
         });
 
+        SuccessResponse.success = true;
         SuccessResponse.data = shoe;
         SuccessResponse.message = "Added shoe successfully";
         SuccessResponse.statusCode = StatusCodes.CREATED;
@@ -34,6 +35,7 @@ async function getShoes(req, res, next) {
     try {
         const shoes = await shoeService.getAllShoes();
 
+        SuccessResponse.success = true;
         SuccessResponse.data = shoes;
         SuccessResponse.message = "Fetched shoes successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -52,6 +54,7 @@ async function getShoe(req, res, next) {
     try {
         const shoe = await shoeService.getShoe();
 
+        SuccessResponse.success = true;
         SuccessResponse.data = shoe;
         SuccessResponse.message = "Fetched shoe successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -77,6 +80,7 @@ async function updateShoe(req, res, next) {
             image: req.body.image,
         });
 
+        SuccessResponse.success = true;
         SuccessResponse.data = shoe;
         SuccessResponse.message = "Successfully updated Shoe";
         SuccessResponse.statusCode = StatusCodes.OK;
@@ -95,6 +99,7 @@ async function removeShoe(req, res, next) {
     try {
         const shoe = await shoeService.removeShoe(req.params.shoeId);
 
+        SuccessResponse.success = true;
         SuccessResponse.data = shoe;
         SuccessResponse.message = "Shoe removed successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
