@@ -1,28 +1,24 @@
 
 {
   "development": {
-    "username": "manoj",
-    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
-    "database": "shoes_store_db_jrjj",
-    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
-    "dialect": "postgres",
-    "logging": false
+    "username": "ujqqgwcuefre2vgd",
+    "password": "GCEh8msMmLjduxC33Jbk",
+    "database": "b2mypdemcj6m4xueyqj5",
+    "host": "b2mypdemcj6m4xueyqj5-mysql.services.clever-cloud.com",
+    "dialect": "mysql"
   },
   "test": {
-    "username": "manoj",
-    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
-    "database": "shoes_store_db_jrjj",
-    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
-    "dialect": "postgres",
-    "logging": false
-
+    "username": "ujqqgwcuefre2vgd",
+    "password": "GCEh8msMmLjduxC33Jbk",
+    "database": "b2mypdemcj6m4xueyqj5",
+    "host": "b2mypdemcj6m4xueyqj5-mysql.services.clever-cloud.com",
+    "dialect": "mysql"
   },
   "production": {
-   "username": "manoj",
-    "password": "jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj",
-    "database": "shoes_store_db_jrjj",
-    "host": "postgres://manoj:jdOtcZpNveOZRaBt3ukzTN41rsvYiRVj@dpg-cpdjiclds78s73ejl0ig-a/shoes_store_db_jrjj",
-    "dialect": "postgres",
-    "logging": false
+    "username": "ujqqgwcuefre2vgd",
+    "password": "GCEh8msMmLjduxC33Jbk",
+    "database": "b2mypdemcj6m4xueyqj5",
+    "host": "b2mypdemcj6m4xueyqj5-mysql.services.clever-cloud.com",
+    "dialect": "mysql"
   }
 }
