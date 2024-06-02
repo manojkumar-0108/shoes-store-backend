@@ -85,6 +85,9 @@ async function verfiyOrder(req, res, next) {
     try {
         const response = await orderService.verfiyOrder(req.params.orderId, req.body.success);
 
+        if (req.body.success !== 'true') {
+            SuccessResponse.success = false;
+        }
         SuccessResponse.data = response;
         SuccessResponse.message = "Order verified successfully";
         SuccessResponse.statusCode = StatusCodes.OK;
