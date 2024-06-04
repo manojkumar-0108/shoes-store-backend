@@ -89,11 +89,11 @@ class ShoeService {
         }
     }
 
-    async updateBook(key, data) {
+    async updateShoe(key, data) {
 
         try {
 
-            const shoe = await this.shoeRepository.update(key, data);
+            const shoe = await this.shoeRepository.updateShoe(key, data);
             return shoe;
 
         } catch (error) {

@@ -65,9 +65,6 @@ async function getUserOrders(req, res, next) {
 async function updateOrderStatus(req, res, next) {
 
     try {
-
-        console.log("Order status recieved :", req.body.status);
-
         const response = await orderService.updateOrderStatus(req.params.orderId, req.body.status);
 
         SuccessResponse.success = true;
