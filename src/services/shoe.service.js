@@ -70,10 +70,17 @@ class ShoeService {
 
         try {
             const shoe = await this.shoeRepository.get(id);
+
+            if (!shoe) {
+                throw new AppError(error.statusCode, "Invalid shoe!", ["Shoe requested to delete is not present"]);
+            }
+
             const response = await this.shoeRepository.destroy(id);
             return response;
 
         } catch (error) {
+
+            console.log("error : ", error);
 
             if (error.statusCode == StatusCodes.NOT_FOUND) {
                 throw new AppError(error.statusCode, "Cannot delete the shoe", ["Shoe requested to delete is not present"]);
