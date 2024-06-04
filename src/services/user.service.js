@@ -22,7 +22,7 @@ class UserService {
             if (findUser) {
                 throw new AppError(
                     StatusCodes.NOT_FOUND,
-                    'Cannot register new account',
+                    'Account already exists',
                     [`User account already exists for given email ${data.email}`]);
             }
 
@@ -68,12 +68,12 @@ class UserService {
              */
             const user = await this.userRepository.getUserByEmail(data.email);
             if (!user) {
-                throw new AppError(StatusCodes.NOT_FOUND, 'Unable to sing in', ['No user found for the given email.']);
+                throw new AppError(StatusCodes.NOT_FOUND, 'Email is not registered!', ['No user found for the given email.']);
             }
 
             const matchPassword = auth.checkPassword(data.password, user.password);
             if (!matchPassword) {
-                throw new AppError(StatusCodes.BAD_REQUEST, 'Unable to sing in', ['Incorrect Password']);
+                throw new AppError(StatusCodes.BAD_REQUEST, 'Incorrect password!', ['Incorrect Password']);
             }
 
             const jwt = auth.generateToken({ id: user.id });
