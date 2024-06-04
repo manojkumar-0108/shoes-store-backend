@@ -68,7 +68,6 @@
     JWT_SECRET="@yourSecret@1#2$%^key#$no"
     STRIPE_SECRET_KET=""
     FRONT_END_URL="https://shoes-store-frontend.onrender.com"
-
    ```
 
 4. 🚀 **Initialize Sequelize**: `Navigate to the src` folder (very important) and execute the following command to initialize Sequelize:
