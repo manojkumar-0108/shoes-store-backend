@@ -1,12 +1,18 @@
 
 {
   "development": {
-    "username": "ujqqgwcuefre2vgd",
-    "password": "GCEh8msMmLjduxC33Jbk",
-    "database": "b2mypdemcj6m4xueyqj5",
-    "host": "b2mypdemcj6m4xueyqj5-mysql.services.clever-cloud.com",
-    "dialect": "mysql",
-    "logging":false
+    "username": "ShoesStoreDB_owner",
+    "password": "q7K2YXroVTGn",
+    "database": "ShoesStoreDB",
+    "host": "ep-noisy-sound-a1b881qu.ap-southeast-1.aws.neon.tech",
+    "dialect": "postgres",
+    "logging":false,
+    "dialectOptions": {
+      "ssl": {
+        "require": true,     
+        "rejectUnauthorized": false 
+      }
+    }
   },
   "test": {
     "username": "ujqqgwcuefre2vgd",
